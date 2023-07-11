@@ -53,3 +53,23 @@ func TestRunSmart(t *testing.T) {
 	}
 
 }
+
+func BenchmarkBrute(b *testing.B) {
+	for _, tc := range testCases {
+		b.Run(fmt.Sprintf("BenchBrute-%d", tc.input), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				_ = RunBrute(tc.input)
+			}
+		})
+	}
+}
+
+func BenchmarkSmart(b *testing.B) {
+	for _, tc := range testCases {
+		b.Run(fmt.Sprintf("BenchSmart-%d", tc.input), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				_ = RunSmart(tc.input)
+			}
+		})
+	}
+}
