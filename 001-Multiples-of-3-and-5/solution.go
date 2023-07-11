@@ -12,6 +12,10 @@ func RunBrute(upToExclusive int) int {
 }
 
 func totalDivisibleBy(input, target int) int {
-	res := target / input
+	res := (target - 1) / input
 	return input * (res * (res + 1)) / 2
+}
+
+func RunSmart(upTo int) int {
+	return totalDivisibleBy(3, upTo) + totalDivisibleBy(5, upTo) - totalDivisibleBy(15, upTo)
 }

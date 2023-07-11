@@ -7,16 +7,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRunBrute(t *testing.T) {
-	testCases := []struct {
-		input int
-		want  int
-	}{
-		{input: 5, want: 3},
-		{input: 10, want: 23},
-		{input: 1_000, want: 233_168},
-	}
+var testCases = []struct {
+	input int
+	want  int
+}{
+	{input: 5, want: 3},
+	{input: 10, want: 23},
+	{input: 1_000, want: 233_168},
+}
 
+func TestRunBrute(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("Brute-%d", tc.input), func(t *testing.T) {
 			have := RunBrute(tc.input)
@@ -42,4 +42,14 @@ func TestDivisibleBy(t *testing.T) {
 			assert.Equal(t, tc.expected, actual, "Check your formula")
 		})
 	}
+}
+
+func TestRunSmart(t *testing.T) {
+	for _, tc := range testCases {
+		t.Run(fmt.Sprintf("Smart-%d", tc.input), func(t *testing.T) {
+			have := RunSmart(tc.input)
+			assert.Equal(t, tc.want, have, fmt.Sprintf("Incorrect results. Want: %v, have: %v", tc.want, have))
+		})
+	}
+
 }
