@@ -10,3 +10,8 @@ func RunBrute(upToExclusive int) int {
 	}
 	return sum
 }
+
+func totalDivisibleBy(input, target int) int {
+	res := target / input
+	return input * (res * (res + 1)) / 2
+}

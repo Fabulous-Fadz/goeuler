@@ -24,3 +24,22 @@ func TestRunBrute(t *testing.T) {
 		})
 	}
 }
+
+func TestDivisibleBy(t *testing.T) {
+	testCases := []struct {
+		name     string
+		input    int
+		target   int
+		expected int
+	}{
+		{"totalDivisibleBy-3-under-10", 3, 10, 18},
+		{"totalDivisibleBy-7-under-1000", 7, 1_000, 71_071},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			actual := totalDivisibleBy(tc.input, tc.target)
+			assert.Equal(t, tc.expected, actual, "Check your formula")
+		})
+	}
+}
